@@ -41,7 +41,7 @@ while ( volveraComenzar != "NO"|| volveraComenzar == "SI"){
 
 /* Adivinanza 1*/
 
-let adiv1= prompt ("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...");
+let adiv1= prompt ("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...").toUpperCase();
 
 while(adiv1 != resp1 ){
     switch(adiv1.toUpperCase()){
@@ -50,14 +50,14 @@ while(adiv1 != resp1 ){
             break;    
        default:
             alert("Incorrecto")
-            adiv1= prompt("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...");
+            adiv1= prompt("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...").toUpperCase();
         continue;
     }
 }
 
  /* Adivinanza 2*/
 
-let adiv2= prompt ("Si me nombran, desaparezco. SOY EL...");
+let adiv2= prompt ("Si me nombran, desaparezco. SOY EL...").toUpperCase();
 
 while(adiv2 != resp2 ){
     switch(adiv2.toUpperCase()){
@@ -66,14 +66,14 @@ while(adiv2 != resp2 ){
         break;
         default:
             alert("Incorrecto")
-            adiv2= prompt("Si me nombran, desaparezco. SOY EL...");
+            adiv2= prompt("Si me nombran, desaparezco. SOY EL...").toUpperCase();
         continue;
     }
 }
 
 /* Adivinanza 3 */
 
-let adiv3= prompt ("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...");
+let adiv3= prompt ("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...").toUpperCase();
 
 while(adiv3 != resp3 ){
     switch(adiv3.toUpperCase()){
@@ -82,14 +82,14 @@ while(adiv3 != resp3 ){
         break;
         default:
             alert("Incorrecto");
-            adiv3= prompt("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...");
+            adiv3= prompt("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...").toUpperCase();
         continue;
         }
 }
 
 /* Adivinanza 4 */
 
-let adiv4= prompt ("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...");
+let adiv4= prompt ("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
 
 while(adiv4 != resp4 ){
     switch(adiv4.toUpperCase()){
@@ -98,7 +98,7 @@ while(adiv4 != resp4 ){
             break;
         default:
             alert("Incorrecto");
-            adiv4= prompt("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...");
+            adiv4= prompt("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
         continue;
     }
 }
