@@ -1,97 +1,166 @@
 /*Codigo Adivinanzas*/
 
-let resultados = []
+function bienvenido() {
+    alert("Bienvenido " + login);
+    const bienv1 = prompt("¿Estás Preparado/a " + login + " ? (SI/NO)").toUpperCase();
+    if (bienv1 === "SI") {
+        alert("¡Excelente! ¡Comencemos!");
+        mostrarAdivinanza();
+    } else {
+        alert("¡Anímate! ¡VAMOS A JUGAR IGUAL...");
+      mostrarAdivinanza();
+    }
+}
 
-function bienvenido(){
+let adivinanzaIndex = 0;
+let resultados = [];
+
+
+// Array con objetos adentro (Adivinanza y respuesta)
+
+const respuestas = [
+    { adivinanza: "Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...", respuesta: "tiempo" },
+    { adivinanza: "Si me nombran, desaparezco. SOY EL...", respuesta: "silencio" },
+    { adivinanza: "Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...", respuesta: "piano" },
+    { adivinanza: "Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...", respuesta: "retrato" }
+];
+
+// DOM para traer los elementos, aplicar para controlar las adivinanzas
+const adivinanzas00 = document.getElementById("adivtext");
+const respuestas00 = document.getElementById("respAdiv");
+const botonRespuestas = document.getElementById("btnRespuesta");
+const listaResultados = document.getElementById("resultadosLista");
+
+// borra input
+function mostrarAdivinanza() {
+    adivinanzas00.textContent = respuestas[adivinanzaIndex].adivinanza;
+    respuestas00.value = '';
+}
+
+
+function verificarRespuesta() {
+    const respuestaUsuario = respuestas00.value.toLowerCase();
+    const respuestaCorrecta = respuestas[adivinanzaIndex].respuesta;
     
-    return login = prompt("Ingrese Nombre y Apellido")
+    if (respuestaUsuario === respuestaCorrecta) {
+    resultados.push({ usuario: login, adivinanza: "Correcta" });
+    alert("¡Respuesta Correcta!");
+  } else {
+    resultados.push({ usuario: login, adivinanza: "Incorrecta" });
+    alert("Respuesta Incorrecta");
 }
 
-function bienvenido2(){
+adivinanzaIndex++;
 
-alert ("Bienvenido " + login)
+if (adivinanzaIndex < respuestas.length) {
+    mostrarAdivinanza();
+} else {
+    alert("¡Juego terminado!");
+    mostrarResultados();
+}
+}
+
+function mostrarResultados() {
+    listaResultados.innerHTML = '';
+    resultados.forEach(resultado => {
+        const li = document.createElement("li");
+        li.textContent = `${resultado.usuario}: ${resultado.adivinanza}`;
+        listaResultados.appendChild(li);
+    });
+}
+
+
+botonRespuestas.addEventListener("click", verificarRespuesta);
+
+const login = prompt("Ingrese Nombre y Apellido");
+bienvenido();
+console.log(resultados)
+
+
+const storageUsuarios = JSON.stringify(resultados);
+
+localStorage.setItem("resultados", storageUsuarios);
+
+
+
+// let resultados = [ ]
+
+
+// function bienvenido(){
+    //     return login = prompt("Ingrese Nombre y Apellido")
+    // }
     
-let bienv1 = prompt("¿Estas Preparado/a " + login + "?").toUpperCase()
-if (bienv1 === "SI"){
-    alert ("Excelente. ¡Comencemos!")
-}else{
-    alert ("¡Animate! VaMOS A JUGAR IGUAL...")
-}
-}
-
-while ( confirm != "cancelar"){
-    
-    do {
-        bienvenido ()
-        bienvenido2 ()
-        //Adivinanza1
-        let resp1 = "TIEMPO"
-        let adiv1= prompt ("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...").toUpperCase();
+    // function bienvenido2(){
+        //     alert("Bienvenido " + login);
         
-        if( adiv1 != resp1) {
-            alert("Respuesta Incorrecta");
-            let adiv1= prompt ("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...").toUpperCase();
-            resultados.push({ usuario1: login, adivinanza1: 'Incorrecta'});
-        } else {
-            (adiv1 === resp1 .includes)
-            alert("Respuesta Correcta");
-            resultados.push({ usuario1: login, adivinanza1: 'Correcta'});
-        };
-        //Adivinanza2
-        let resp2 = "SILENCIO"
-        let adiv2= prompt ("Si me nombran, desaparezco. SOY EL...").toUpperCase();
+//     let bienv1 = prompt("¿Estas Preparado/a " + login + " ? (SI/NO)" ).toUpperCase()
+//     if (bienv1 === "SI"){
+//         alert ("Excelente. ¡Comencemos!")
+//     }else{
+//         alert ("¡Animate! VaMOS A JUGAR IGUAL...")
+//     }
+// }
+
+// bienvenido()
+// bienvenido2()
+
+// let participante = {
+//     nombre: login,
+//     respuestasCorrectas: 0,
+//     respuestasIncorrectas: 0,
+//   };
+
+// do {
+//         //Adivinanza1
+//         let resp1 = "TIEMPO"
+//         let adiv1= prompt ("Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...").toUpperCase();
         
-        if( adiv2 != resp2) {
-            alert("Respuesta Incorrecta");
-            let adiv1= prompt ("Si me nombran, desaparezco. SOY EL...").toUpperCase();
-            resultados.push({ usuario1: login, adivinanza2: 'Incorrecta'});
-        } else {
-            (adiv2 == resp2)
-            alert("Respuesta Correcta");
-            resultados.push({ usuario1: login, adivinanza2: 'Correcta'});
-        };
-        //Adivinanza3
-        let resp3 = "PIANO"
-        let adiv3= prompt ("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...").toUpperCase();
+//         if( adiv1 === resp1) {
+//             alert("Respuesta Correcta");
+//             participante.respuestasCorrectas++;
+//         } else {
+//             alert("Respuesta Incorrecta");
+//             participante.respuestasIncorrectas++;
+//         };
+//         //Adivinanza2
+//         let resp2 = "SILENCIO"
+//         let adiv2= prompt ("Si me nombran, desaparezco. SOY EL...").toUpperCase();
         
-        if( adiv3 != resp3) {
-            alert("Respuesta Incorrecta");
-            let adiv1= prompt ("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...").toUpperCase();
-            resultados.push({ usuario1: login, adivinanza3: 'Incorrecta'});
-        } else {
-            (adiv3 == resp3)
-            alert("Respuesta Correcta");
-            resultados.push({ usuario1: login, adivinanza3: 'Correcta'});
-        };
+//         if( adiv2 === resp2) {
+//             alert("Respuesta Correcta");
+//             participante.respuestasCorrectas++;
+//         } else {
+//             alert("Respuesta Incorrecta");
+//             participante.respuestasIncorrectas++;
+//         };
+//         //Adivinanza3
+//         let resp3 = "PIANO"
+//         let adiv3= prompt ("Cien hermanitos en una sola tabla, si nadie los toca ninguno habla. SOY EL...").toUpperCase();
         
-        //Adivinanza4
-        let resp4 = "RETRATO"
-        let adiv4= prompt ("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
+//         if( adiv3 === resp3) {
+//             alert("Respuesta Correcta");
+//             participante.respuestasCorrectas++;
+//         } else {
+//             alert("Respuesta Incorrecta");
+//             participante.respuestasIncorrectas++;
+//         };
         
-        if( adiv4 != resp4) {
-            alert("Respuesta Incorrecta");
-            let adiv1= prompt ("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
-            resultados.push({ usuario1: login, adivinanza4: 'Incorrecta'});
-        } else {
-            (adiv4 == resp4)
-            alert("Respuesta Correcta");
-            resultados.push({ usuario1: login, adivinanza4: 'Correcta'});
-        };
-        // "Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
+//         //Adivinanza4
+//         let resp4 = "RETRATO"
+//         let adiv4= prompt ("Si soy joven, Joven quedo. Si soy viejo, viejo quedo. Tengo boca pero no hablo, tengo ojos pero no veo. SOY UN...").toUpperCase();
+        
+//         if( adiv4 === resp4) {
+//             alert("Respuesta Correcta");
+//             participante.respuestasCorrectas++;
+//         } else {
+//             alert("Respuesta Incorrecta");
+//             participante.respuestasIncorrectas++;
+//         };
+//     } while(confirm("¿Quieres volver a intentarlo?"));
 
-    } while(confirm("¿Quieres volver a intentarlo?"));
-    break;
-}
+// resultados.push({ Participante: participante });
 
-let gameOver = alert ("Gracias por Participar")
-
-// Array resultado
-console.log(resultados);
+// let gameOver = alert ("Gracias por Participar");
 
 
-// En esta parte está el metodo de filtrafo ".filter", No supe aplicarlo, intente de varias maneras pero no entendi
-// Intente que .filter encuentre todas las respuestas correctas y me las presente por console.log
-
-// let cantRespCorr = resultados.filter((resultados) => adivinanza1.adivinanza1 === 'Correcta');
-// console.log("Respuestas Correctas: ")
-// console.log(cantRespCorr)
+// console.log(resultados);

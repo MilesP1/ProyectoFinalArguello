@@ -1,0 +1,17 @@
+@media (min-width: 320px) and (max-width: 1800px) {
+
+    .body{
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    
+}
+
+
+body {
+    background-color: #001a23;
+    color: #E8F1F2;
+    text-align: center;
+    /* color: 001a23; */
+}
