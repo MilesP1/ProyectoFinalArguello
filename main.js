@@ -1,16 +1,5 @@
 /*Codigo Adivinanzas*/
 
-function bienvenido() {
-    alert("Bienvenido " + login);
-    const bienv1 = prompt("¿Estás Preparado/a " + login + " ? (SI/NO)").toUpperCase();
-    if (bienv1 === "SI") {
-        alert("¡Excelente! ¡Comencemos!");
-        mostrarAdivinanza();
-    } else {
-        alert("¡Anímate! ¡VAMOS A JUGAR IGUAL...");
-      mostrarAdivinanza();
-    }
-}
 
 let adivinanzaIndex = 0;
 let resultados = [];
@@ -27,36 +16,51 @@ const respuestas = [
 ];
 
 // DOM para traer los elementos, aplicar para controlar las adivinanzas
+
 const adivinanzas00 = document.getElementById("adivtext");
 const respuestas00 = document.getElementById("respAdiv");
 const botonRespuestas = document.getElementById("btnRespuesta");
 const listaResultados = document.getElementById("resultadosLista");
+const loginBienv = document.getElementById("loginbienvenido");
+// const loginBienv2 = loginBienv.value.toLowerCase();
+const botonlogin = document.getElementById("btnlogin");
 
 // borra input
+
+botonlogin.addEventListener("click", () =>{
+
+    Swal.fire(
+        "Gracias por Registrarte",
+        "Empecemos",
+        mostrarAdivinanza()
+    )
+})
+
+
 function mostrarAdivinanza() {
+    const respuestaUsuario = respuestas00.value.toLowerCase();
+    const respuestaCorrecta = respuestas[adivinanzaIndex].respuesta;
+    
+    if (respuestaUsuario === respuestaCorrecta) {
+        resultados.push({ usuario: loginBienv.value, adivinanza: "Correcta" });
+        Swal.fire("Respuesta Correcta")
+    } else {
+        resultados.push({ usuario: loginBienv.value , adivinanza: "Incorrecta" });
+        Swal.fire("Respuesta Incorrecta")
+    }
     adivinanzas00.textContent = respuestas[adivinanzaIndex].adivinanza;
     respuestas00.value = '';
 }
 
 
 function verificarRespuesta() {
-    const respuestaUsuario = respuestas00.value.toLowerCase();
-    const respuestaCorrecta = respuestas[adivinanzaIndex].respuesta;
-    
-    if (respuestaUsuario === respuestaCorrecta) {
-        resultados.push({ usuario: login, adivinanza: "Correcta" });
-        alert("¡Respuesta Correcta!");
-    } else {
-        resultados.push({ usuario: login, adivinanza: "Incorrecta" });
-        alert("Respuesta Incorrecta");
-    }
 
     adivinanzaIndex++;
 
     if (adivinanzaIndex < respuestas.length) {
         mostrarAdivinanza();
     } else {
-        alert("¡Juego terminado!");
+        Swal.fire("Game Over")
         mostrarResultados();
     }
     }
@@ -74,8 +78,8 @@ function mostrarResultados() {
 
 botonRespuestas.addEventListener("click", verificarRespuesta);
 
-const login = prompt("Ingrese Nombre y Apellido");
-bienvenido();
+// const login = prompt("Ingrese Nombre y Apellido");
+// bienvenido();
 
 console.log(resultados) 
 

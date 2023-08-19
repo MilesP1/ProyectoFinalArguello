@@ -95,3 +95,16 @@
                 </div>
               </div>
     </div>
+
+    
+// function bienvenido() {
+//     alert("Bienvenido " + login);
+//     const bienv1 = prompt("¿Estás Preparado/a " + login + " ? (SI/NO)").toUpperCase();
+//     if (bienv1 === "SI") {
+//         alert("¡Excelente! ¡Comencemos!");
+//         mostrarAdivinanza();
+//     } else {
+//         alert("¡Anímate! ¡VAMOS A JUGAR IGUAL...");
+//       mostrarAdivinanza();
+//     }
+// }

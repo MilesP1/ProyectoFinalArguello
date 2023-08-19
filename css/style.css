@@ -1,15 +1,24 @@
 @media (min-width: 320px) and (max-width: 1800px) {
 
     .body{
+        
         align-items: center;
         justify-content: center;
         align-content: center;
     }
     
 }
+#adivinanzas01 {
+    font-size: large;
+}
 
+button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
 body {
+    font-family: 'Lora', serif;
     background-color: #001a23;
     color: #E8F1F2;
     text-align: center;
