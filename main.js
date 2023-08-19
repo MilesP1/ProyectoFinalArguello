@@ -1,12 +1,8 @@
 /*Codigo Adivinanzas*/
-
-
 let adivinanzaIndex = 0;
 let resultados = [];
 
-
 // Array con objetos adentro (Adivinanza y respuesta)
-
 const respuestas = [
     { adivinanza: "Cuando paso el Hierro se oxida, el acero se rompe y la carne se pudre. SOY EL...", respuesta: "tiempo" },
     { adivinanza: "Si me nombran, desaparezco. SOY EL...", respuesta: "silencio" },
@@ -16,26 +12,12 @@ const respuestas = [
 ];
 
 // DOM para traer los elementos, aplicar para controlar las adivinanzas
-
 const adivinanzas00 = document.getElementById("adivtext");
 const respuestas00 = document.getElementById("respAdiv");
 const botonRespuestas = document.getElementById("btnRespuesta");
 const listaResultados = document.getElementById("resultadosLista");
 const loginBienv = document.getElementById("loginbienvenido");
-// const loginBienv2 = loginBienv.value.toLowerCase();
 const botonlogin = document.getElementById("btnlogin");
-
-// borra input
-
-botonlogin.addEventListener("click", () =>{
-
-    Swal.fire(
-        "Gracias por Registrarte",
-        "Empecemos",
-        mostrarAdivinanza()
-    )
-})
-
 
 function mostrarAdivinanza() {
     const respuestaUsuario = respuestas00.value.toLowerCase();
@@ -51,19 +33,24 @@ function mostrarAdivinanza() {
     adivinanzas00.textContent = respuestas[adivinanzaIndex].adivinanza;
     respuestas00.value = '';
 }
+botonlogin.addEventListener("click", () =>{
 
+    Swal.fire(
+        "Gracias por Registrarte",
+        "Empecemos",
+        mostrarAdivinanza()
+    )
+})
 
 function verificarRespuesta() {
-
     adivinanzaIndex++;
-
     if (adivinanzaIndex < respuestas.length) {
         mostrarAdivinanza();
     } else {
         Swal.fire("Game Over")
         mostrarResultados();
     }
-    }
+}
 
 function mostrarResultados() {
     listaResultados.innerHTML = '';
@@ -75,14 +62,5 @@ function mostrarResultados() {
     localStorage.setItem("resultados", JSON.stringify(resultados));
 }
 
-
 botonRespuestas.addEventListener("click", verificarRespuesta);
-
-// const login = prompt("Ingrese Nombre y Apellido");
-// bienvenido();
-
-console.log(resultados) 
-
-
-
-
+console.log(resultados);
