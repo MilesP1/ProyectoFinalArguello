@@ -1,13 +1,10 @@
-@media (min-width: 320px) and (max-width: 1800px) {
+/* @media (min-width: 320px) and (max-width: 1800px) {
 
     .body{
         
-        align-items: center;
-        justify-content: center;
-        align-content: center;
     }
     
-}
+} */
 #adivinanzas01 {
     font-size: large;
 }
@@ -17,10 +14,24 @@ button {
     margin-bottom: 1rem;
 }
 
-body {
+body{
+    margin:0;
+    padding: 0;
+    
+    font-size: x-large;
     font-family: 'Lora', serif;
-    background-color: #001a23;
+    background-image: url(/images/fondogradiente.jpg);
     color: #E8F1F2;
     text-align: center;
     /* color: 001a23; */
+}
+
+#resultadosContainer {
+
+    border-radius: 20px;
+    background-image: url(/images/fondogradiente.jpg);
+    border-color: aquamarine;
+
+
+
 }

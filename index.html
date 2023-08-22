@@ -11,23 +11,25 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
-<body>
+<body class="container-fluid">
+  <header>
     <h1>"Juegos"</h1>
-
+    <p >Bienvenido. Ingresa tu Nombre para Empezar </p>
+  </header>
     <div class="bienv">
-      <p >Bienvenido. Ingresa tu Nombre para Empezar </p>
       <input type="text" class="form-control" id="loginbienvenido" placeholder="Ingresa Nombre y Apellido">
-      <button id="btnlogin" type="button" class="btn btn-outline-secondary">Ingresar Usuario</button>
+      <button id="btnlogin" type="button" class="btn btn-dark">Ingresar Usuario</button>
       
     </div>
 
     <div id="adivinanzas01">
       <p id="adivtext"></p>
       <input id="respAdiv" type="text" class="form-control" placeholder="Respuesta">
-      <button id="btnRespuesta" type="button" class="btn btn-outline-secondary">Responder</button>
+      <button id="btnRespuesta" type="button" class="btn btn-dark">Responder</button>
     </div>
   
-    <div id="resultados-container">
+    <div id="resultadosContainer">
+      <button id="iniciarTemp" type="button" class="btn btn-dark">Mostrar resultados</button>
       <h2>Scores:</h2>
       <ul id="resultadosLista"></ul>
     </div>

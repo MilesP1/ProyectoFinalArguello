@@ -108,3 +108,23 @@
 //       mostrarAdivinanza();
 //     }
 // }
+
+
+Temporizador:
+
+// let contador = 10; // Tiempo en segundos
+// let intervalId = ''
+
+// function iniciarTemporizador() {
+//     botontemp.style.display = "none"; 
+//     intervalId = setInterval(actualizarContador, 1000);
+// }
+
+// function actualizarContador() {
+//     contador--;
+//     if (contador < 0) {
+//         clearInterval(intervalId); // Detener el temporizador
+//         verificarRespuesta(); // Pasar a la siguiente adivinanza
+//     }
+//     botontemp.textContent = `Tiempo restante: ${contador} segundos`;
+// }
