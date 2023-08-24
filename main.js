@@ -1,6 +1,7 @@
 /*Codigo Adivinanzas*/
-let adivinanzaIndex = 0;
-let resultados = [];
+let i = 0;
+let resultados = JSON.parse(localStorage.getItem("resultados")) || [];
+let usuarioActual= "";
 
 // Array con objetos adentro (Adivinanza y respuesta)
 const respuestas = [
@@ -19,50 +20,57 @@ const listaResultados = document.getElementById("resultadosLista");
 const loginBienv = document.getElementById("loginbienvenido");
 const botonlogin = document.getElementById("btnlogin");
 const botontemp = document.getElementById("iniciarTemp");
+const usuarioNuevo = {usuario:"",respuestas: {correctas:0, incorrectas:0}};
 
 function mostrarAdivinanza() {
-    adivinanzas00.textContent = respuestas[adivinanzaIndex].adivinanza;
+    adivinanzas00.textContent = respuestas[i].adivinanza;
     respuestas00.value = '';
 }
 
 function mostrarResultados() {
     listaResultados.innerHTML = '';
-    resultados.forEach(resultado => {
-        const li = document.createElement("li");
-        li.textContent = `${resultado.usuario}: ${resultado.adivinanza}`;
-        listaResultados.appendChild(li);
-    });
+    const li = document.createElement("li");
+    li.textContent = `${usuarioNuevo.usuario} Correctas: ${usuarioNuevo.respuestas.correctas} Incorrectas: ${ usuarioNuevo.respuestas.incorrectas}`;
+    listaResultados.appendChild(li);
     localStorage.setItem("resultados", JSON.stringify(resultados));
 }
 
+
 function verificarRespuesta() {
     const respuestaUsuario = respuestas00.value.toLowerCase();
-    const respuestaCorrecta = respuestas[adivinanzaIndex].respuesta;
+    const respuestaCorrecta = respuestas[i].respuesta;
+    
     if (respuestaUsuario === respuestaCorrecta) {
-        resultados.push({ usuario: loginBienv.value.toLowerCase(), adivinanza: "Correcta" });
-        Swal.fire("Respuesta Correcta")
+        Swal.fire("Respuesta Correcta");
+        usuarioNuevo.respuestas.correctas++;
     } else {
-        resultados.push({ usuario: loginBienv.value.toLowerCase(), adivinanza: "Incorrecta" });
-        Swal.fire("Respuesta Incorrecta")
+        Swal.fire("Respuesta Incorrecta");
+        usuarioNuevo.respuestas.incorrectas++;
     }
-  
-adivinanzaIndex++;
-if (adivinanzaIndex < respuestas.length) {
-    mostrarAdivinanza();
-} else {
-    Swal.fire("Game Over");
+    i++;
+    if (i < respuestas.length) {
+        mostrarAdivinanza();
+    } else {
+        Swal.fire("Game Over");
+        resultados.push(usuarioNuevo);
+    }
 }
-}
+
+loginBienv.addEventListener("input", (e) =>{
+    usuarioActual = (e.target.value);
+})
 
 botontemp.addEventListener("click", () =>{
     mostrarResultados();
 })
 
 botonlogin.addEventListener("click", () =>{
+    usuarioNuevo.usuario = usuarioActual
     Swal.fire(
         "Gracias por Registrarte",
         mostrarAdivinanza(),
     )
 })
+
 botonRespuestas.addEventListener("click", verificarRespuesta);
 console.log(resultados);
