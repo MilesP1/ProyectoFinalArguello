@@ -1,7 +1,5 @@
 /*Codigo Adivinanzas*/
 let i = 0;
-let resultados = JSON.parse(localStorage.getItem("resultados")) || [];
-let usuarioActual= "";
 
 // Array con objetos adentro (Adivinanza y respuesta)
 const respuestas = [
@@ -28,51 +26,74 @@ function mostrarAdivinanza() {
 }
 
 function mostrarResultados() {
-    listaResultados.innerHTML = '';
-    resultados.forEach(usuario => {
+    listaResultados.innerHTML = "";
+    const resultadoLocal = JSON.parse(localStorage.getItem("resultados"));
+    if (resultadoLocal) {
+      resultadoLocal.forEach((resultado) => {
         const li = document.createElement("li");
-    li.textContent = `${usuario.usuario} Correctas: ${usuarioNuevo.respuestas.correctas} Incorrectas: ${ usuarioNuevo.respuestas.incorrectas}`;
-    listaResultados.appendChild(li);
-    })
-    localStorage.setItem("resultados", JSON.stringify(resultados));
-}
-
+        li.textContent = `${resultado.usuario} -> Respuestas Correctas: ${resultado.correctas} Respuestas Incorrectas: ${resultado.incorrectas}`;
+        listaResultados.appendChild(li);
+      });
+    } else {
+      listaResultados.innerHTML = "No hay resultados para mostrar";
+    }
+  }
 
 function verificarRespuesta() {
     const respuestaUsuario = respuestas00.value.toLowerCase();
     const respuestaCorrecta = respuestas[i].respuesta;
-    
     if (respuestaUsuario === respuestaCorrecta) {
-        Swal.fire("Respuesta Correcta");
-        usuarioNuevo.respuestas.correctas++;
+      const resultadoLocal = JSON.parse(localStorage.getItem("resultados"));
+      resultadoLocal[resultadoLocal.length - 1].correctas += 1;
+      localStorage.setItem("resultados", JSON.stringify(resultadoLocal));
+      Swal.fire("Respuesta Correcta");
     } else {
-        Swal.fire("Respuesta Incorrecta");
-        usuarioNuevo.respuestas.incorrectas++;
+      const resultadoLocal = JSON.parse(localStorage.getItem("resultados"));
+      console.log(resultadoLocal);
+      resultadoLocal[resultadoLocal.length - 1].incorrectas += 1;
+      localStorage.setItem("resultados", JSON.stringify(resultadoLocal));
+      Swal.fire("Respuesta Incorrecta");
     }
+  
     i++;
-    if (i < respuestas.length) {
-        mostrarAdivinanza();
+    if (i < 5) {
+      mostrarAdivinanza();
     } else {
-        Swal.fire("Game Over");
-        resultados.push(usuarioNuevo);
+      Swal.fire("Game Over");
+      i = 0;
     }
-}
-
-loginBienv.addEventListener("input", (e) =>{
-    usuarioActual = (e.target.value);
-})
+  }
 
 botontemp.addEventListener("click", () =>{
     mostrarResultados();
 })
 
-botonlogin.addEventListener("click", () =>{
-    usuarioNuevo.usuario = usuarioActual
-    Swal.fire(
-        "Gracias por Registrarte",
-        mostrarAdivinanza(),
-    )
-})
-
+botonlogin.addEventListener("click", () => {
+    if (loginBienv.value != "") {
+      const resultadoLocal = JSON.parse(localStorage.getItem("resultados"));
+      if (resultadoLocal) {
+        resultadoLocal.push({
+          usuario: loginBienv.value,
+          correctas: 0,
+          incorrectas: 0,
+        });
+        localStorage.setItem("resultados", JSON.stringify(resultadoLocal));
+      } else {
+        const resultadoLocal = [
+          {
+            usuario: loginBienv.value,
+            correctas: 0,
+            incorrectas: 0,
+          },
+        ];
+        localStorage.setItem("resultados", JSON.stringify(resultadoLocal));
+      }
+  
+      Swal.fire("Gracias por Registrarte", mostrarAdivinanza());
+    } else {
+      Swal.fire("coloque su nombre");
+      mostrarAdivinanza()
+    } 
+  });
 botonRespuestas.addEventListener("click", verificarRespuesta);
 console.log(resultados);
