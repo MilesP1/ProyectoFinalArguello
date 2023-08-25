@@ -29,9 +29,11 @@ function mostrarAdivinanza() {
 
 function mostrarResultados() {
     listaResultados.innerHTML = '';
-    const li = document.createElement("li");
-    li.textContent = `${usuarioNuevo.usuario} Correctas: ${usuarioNuevo.respuestas.correctas} Incorrectas: ${ usuarioNuevo.respuestas.incorrectas}`;
+    resultados.forEach(usuario => {
+        const li = document.createElement("li");
+    li.textContent = `${usuario.usuario} Correctas: ${usuarioNuevo.respuestas.correctas} Incorrectas: ${ usuarioNuevo.respuestas.incorrectas}`;
     listaResultados.appendChild(li);
+    })
     localStorage.setItem("resultados", JSON.stringify(resultados));
 }
 
