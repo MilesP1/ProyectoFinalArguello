@@ -11,21 +11,24 @@ button {
 body{
     margin:0;
     padding: 0;
-    
     font-size: x-large;
     font-family: 'Lora', serif;
     background-image: url(../images/fondogradiente.jpg);
     color: #E8F1F2;
     text-align: center;
-    /* color: 001a23; */
+}
+
+h3{
+    font-size: medium;
+}
+#gengarDiv {
+    justify-content: space-evenly;
 }
 
 #resultadosContainer {
-
-    border-radius: 20px;
-    background-image: url(/images/fondogradiente.jpg);
-    border-color: aquamarine;
-
-
-
+    border-radius: 18px;
+    background-color: #323031;
+}
+#finalPokemon {
+    margin-bottom: 2rem ;
 }

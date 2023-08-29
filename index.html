@@ -9,33 +9,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Document</title>
+    <title>Pokemon Quest | Jugá</title>
 </head>
 <body class="container-fluid">
   <header>
-    <h1>"Juegos"</h1>
-    <p >Bienvenido. Ingresa tu Nombre para Empezar </p>
+    <h1>¿Cuanto sabes de Pokemon?</h1>
+    <p >Ingresa tu Nombre para Empezar </p>
   </header>
     <div class="bienv">
-      <input type="text" class="form-control" id="loginbienvenido" placeholder="Ingresa Nombre y Apellido">
-      <button id="btnlogin" type="button" class="btn btn-dark">Ingresar Usuario</button>
-      
+      <input type="text" class="form-control" id="loginbienvenido" placeholder="NOMBRE / ALIAS">
+      <button id="btnlogin" type="button" class="btn btn-dark">INGRESÁ</button>
     </div>
 
     <div id="adivinanzas01">
       <p id="adivtext"></p>
-      <input id="respAdiv" type="text" class="form-control" placeholder="Respuesta">
-      <button id="btnRespuesta" type="button" class="btn btn-dark">Responder</button>
+      <input id="respAdiv" type="text" class="form-control" placeholder="RESPUESTA">
+      <p id="timer">--</p>
+      <button id="btnRespuesta" type="button" class="btn btn-dark">RESPONDE</button>
     </div>
-  
+
+    <div class="card-group" id="gengarDiv"></div>
+    <button id="btnpistas01" type="button" class="btn btn-dark">¿PISTAS?</button>
+    
     <div id="resultadosContainer">
-      <button id="iniciarTemp" type="button" class="btn btn-dark">Mostrar resultados</button>
+      <button id="btnResultados" type="button" class="btn btn-dark">MOSTRAR SCORES</button>
       <h2>Scores:</h2>
       <ul id="resultadosLista"></ul>
     </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="main.js"></script>
 </body>
 </html>
 
