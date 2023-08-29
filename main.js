@@ -1,11 +1,12 @@
 /*Codigo Adivinanzas*/
+
 let i = 0;
 // Array con objetos adentro (Adivinanza y respuesta)
 const respuestas = [
     { adivinanza: "¿Qué Pokemon aparece en el primer episodio luchando contra Nidorino?", respuesta: "gengar"},
     { adivinanza: "¿A qué Pokemon abandonan bajo la lluvia y es rescatado por Ash?", respuesta: "charmander" },
     { adivinanza: "El Equipo Rocket roba un Pokemon en Pueblo Newpark. ¿Cuál es?", respuesta: "totodile" },
-    { adivinanza: "¿Quién vence a Hariyama en el Gimnasio Dewford?", respuesta: "treecko" },
+    { adivinanza: "¿Qué Pokemon de Ash vence a Hariyama en el Gimnasio Dewford?", respuesta: "treecko" },
     { adivinanza: "¿Cuál es el primer Pokemon de James en la Region Hoenn?", respuesta: "cacnea"},
 ];
 // DOM para traer los elementos, aplicar para controlar las adivinanzas
@@ -18,15 +19,13 @@ const botonlogin = document.getElementById("btnlogin");
 const buttonResultados = document.getElementById("btnResultados");
 const botonpista = document.getElementById("btnpistas01");
 const gengarDiv = document.getElementById("gengarDiv");
-const charmanderDiv = document.getElementById("gengarDiv");
-const usuarioNuevo = {usuario:"",respuestas: {correctas:0, incorrectas:0}};
 let renderizada = false;
 let secondsRemaining = 60;
 ////temporizador
 function updateTimer() {
   const timerDisplay = document.getElementById("timer");
   timerDisplay.textContent = secondsRemaining + " segundos";
-  if (secondsRemaining <= 0) {
+  if (secondsRemaining === 0) {
     clearInterval(timerInterval);
     timerDisplay.textContent = "Tiempo agotado";
   }
