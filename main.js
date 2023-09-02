@@ -18,14 +18,13 @@ const loginBienv = document.getElementById("loginbienvenido");
 const botonlogin = document.getElementById("btnlogin");
 const buttonResultados = document.getElementById("btnResultados");
 const botonpista = document.getElementById("btnpistas01");
-const gengarDiv = document.getElementById("gengarDiv");
 let renderizada = false;
 let secondsRemaining = 60;
 ////temporizador
 function updateTimer() {
   const timerDisplay = document.getElementById("timer");
   timerDisplay.textContent = secondsRemaining + " segundos";
-  if (secondsRemaining === 0) {
+  if (secondsRemaining <= 0) {
     clearInterval(timerInterval);
     timerDisplay.textContent = "Tiempo agotado";
   }
@@ -152,7 +151,6 @@ function callPokemon() {
 
       if (apiData.length > 0 && !renderizada) {
         renderizada = true;
-
         apiData.map((p) => {
           const pista = document.createElement("div");
           pista.innerHTML = `<div class="card"><img src="${p[0]}"> <h3>${p[1]}</h3></div>`;
